@@ -23,3 +23,5 @@ jobs:
       uses: actions/checkout@v4
     - name: linting pr title
       run: make conventional-pr-title-lint
+      env:
+        PULL_REQUEST_TITLE: ${{ github.event.pull_request-title }}
