@@ -22,4 +22,4 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: linting pr title
-      run: ./scripts/convertional-commits/message.sh ${{ github.event.pull_request-title }} 
+      run: ./scripts/conventional-commits/message.sh ${{ github.event.pull_request-title }} 
