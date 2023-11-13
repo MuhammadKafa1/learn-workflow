@@ -2,7 +2,7 @@
 #
 # Validates a commit message and PR title against a sub-set of the Conventional Commits
 # specification https://www.conventionalcommits.org
-#
+# something..
 # Supported features
 #  - list of commit types
 #  - optional scope
