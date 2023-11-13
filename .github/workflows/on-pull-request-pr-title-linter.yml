@@ -1,0 +1,24 @@
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+      
+name: PR title Linter
+  
+jobs:
+  Go-Linting:
+    runs-on: ubuntu-latest
+    steps:
+        # Setup environment
+      - name: Checkout code
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          fetch-depth: ${{ github.event.pull_request.commits }}
+          ref: ${{github.event.pull_request.head.ref}}
+          repository: ${{github.event.pull_request.head.repo.full_name}}
+          token: ${{ secrets.ACCESS_TOKEN }}
+      - name: PR title linter
+        run: ./scripts/conventional-commits/message.sh "$PR_TITLE"
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }} 
+    
+    
