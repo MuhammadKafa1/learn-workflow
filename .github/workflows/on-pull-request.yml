@@ -14,3 +14,12 @@ jobs:
           run: |
             echo This demo file for pull request open reopen synchronize and show
             echo very basic and easy-to-understand workflow.
+
+  linting-PR:
+    name: linting pr title
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: linting pr title
+      run: make conventional-pr-title-lint
