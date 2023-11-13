@@ -13,4 +13,4 @@ jobs:
         - name: Write a message for on pull request type open
           run: |
             echo This demo file for pull request open reopen synchronize and show
-            echo basic and easy-to-understand workflow.
+            echo very basic and easy-to-understand workflow.
