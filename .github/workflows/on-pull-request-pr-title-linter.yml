@@ -8,10 +8,6 @@ jobs:
   Go-Linting:
     runs-on: ubuntu-latest
     steps:
-        # Setup environment..
-      - name: Checkout code
-        uses: actions/checkout@v4 # v4.1.1
-
       - name: PR title linter
         run: ./scripts/conventional-commits/message.sh "$PR_TITLE"
         env:
