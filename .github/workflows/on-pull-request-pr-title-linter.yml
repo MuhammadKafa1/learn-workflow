@@ -5,7 +5,7 @@ on:
 name: PR title Linter on pull request
   
 jobs:
-  Go-Linting:
+  PR-Title-Linting:
     runs-on: ubuntu-latest
     steps:
         # Setup environment..
