@@ -13,4 +13,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: Write a message for on pull request type open
         run: |
-          echo This demo file for pull request open reopen synchronize and show. ${{ vars.env_var }}
+          echo This demo1 file for pull request open reopen synchronize and show. ${{ vars.env_var }}
