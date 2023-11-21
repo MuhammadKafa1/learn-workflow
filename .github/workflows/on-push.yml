@@ -8,7 +8,7 @@ name: on-push-to-test-branch-13-11-2023
 jobs:
   build:
     name: on push
-    environment: dev
+    environment: stage
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
