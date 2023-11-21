@@ -9,6 +9,8 @@ jobs:
   build:
     name: on push
     strategy:
+      fail-fast: true
+      max-parallel: 1
       matrix:
         environment: [dev, stage, prod]
     environment: ${{ matrix.environment }}
