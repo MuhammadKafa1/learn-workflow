@@ -11,6 +11,7 @@ jobs:
     strategy:
       matrix:
         environment: [dev, stage, prod]
+    environment: ${{ matrix.environment }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
