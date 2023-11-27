@@ -1,0 +1,23 @@
+name: "prepare go"
+description: this action is used to install go and set access to private go modules.
+
+inputs:
+  ACCESS_TOKEN:
+    description: access token to github private repositories.
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: install go
+      uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe # v4.1.0
+      with:
+        go-version-file: 'go.mod'
+
+    - name: private go module access
+      run: |
+        git config \
+          --global \
+          url."https://${{ inputs.ACCESS_TOKEN }}@github.com/ingka-group-digital/".insteadOf "https://github.com/ingka-group-digital/"
+        echo "access token is ${{ inputs.ACCESS_TOKEN }}"
+      shell: bash
