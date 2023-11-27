@@ -13,7 +13,7 @@ jobs:
         - name: Write a message for on pull request type open
           run: |
             echo This demo file for pull request open reopen synchronize and show
-            echo very basic and easy-to-understand workflow -composite action.
+            echo very basic and easy-to-understand workflow -composite action test.
         - name: step to call composite action
           uses: ./.github/actions/my-action
           with:
