@@ -11,10 +11,3 @@ updates:
       interval: "daily"
     commit-message:
       prefix: "ci(deps): "
-
-  - package-ecosystem: "github-actions"
-    directory: "/.github/actions/my-action"
-    schedule:
-      interval: "daily"
-    commit-message:
-      prefix: "ci(deps): "
