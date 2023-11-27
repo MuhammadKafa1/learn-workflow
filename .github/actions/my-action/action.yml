@@ -14,10 +14,6 @@ runs:
       with:
         go-version-file: 'go.mod'
 
-    - name: private go module access
-      run: |
-        git config \
-          --global \
-          url."https://${{ inputs.ACCESS_TOKEN }}@github.com/ingka-group-digital/".insteadOf "https://github.com/ingka-group-digital/"
-        echo "access token is ${{ inputs.ACCESS_TOKEN }}"
+    - name: step 2
+      run: echo "this is step 2"
       shell: bash
