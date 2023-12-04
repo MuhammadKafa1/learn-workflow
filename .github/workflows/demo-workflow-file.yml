@@ -19,17 +19,13 @@ jobs:
 
             - name: print test var with passing it two line
               run: |-
-                ( \
                   TEST_VAR="test var = value1" \
                   TEST_VAR1="$(make test-step)" \
                   TEST_VAR="test var = value2" \
                   TEST_VAR2="$(make test-step)" \
-                  make test-step-all \
-                )
+                  make test-step-all
 
-                ( \
                   TEST_VAR="xxx" \
-                  make test-step-all \
-                )
+                  make test-step-all
           
         
