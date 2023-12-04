@@ -49,5 +49,6 @@ jobs:
             - name: tag docker image and publish to stage
               run: |-
                 GCP_PROJECT_ID="${{ needs.export-dev-variables.outputs.GCP_PROJECT_ID }}" \
-                DEV_IMAGE="$(make docker-info)"
+                DEV_IMAGE="$(make docker-info)" \
+                GCP_PROJECT_ID="${{ vars.GCP_PROJECT_ID }}"
         
