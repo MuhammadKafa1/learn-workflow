@@ -19,8 +19,6 @@ jobs:
 
             - name: print test var with passing it two line
               run: |-
-                TEST_VARX="xxxx" echo $TEST_VARX
-                
                 TEST_VAR="test var = value1" \
                 TEST_VAR1="$(make test-step)" \
                 TEST_VAR="test var = value2" \
@@ -29,5 +27,16 @@ jobs:
 
                 TEST_VAR="xxx" \
                 make test-step-all
+
+            - name: tag docker image and publish to stage
+              run: |-
+                GCP_PROJECT_ID="${{ needs.export-dev-variables.outputs.GCP_PROJECT_ID }}" \
+                DEV_IMAGE="$(make docker-info)" \
+                GCP_PROJECT_ID="${{ vars.GCP_PROJECT_ID }}" \
+                STAGE_IMAGE="$(make docker-info)" \
+                docker tag "$DEV_IMAGE" "$STAGE_IMAGE"         
+        
+                GCP_PROJECT_ID="${{ vars.GCP_PROJECT_ID }}" \
+                make docker-publish
           
         
