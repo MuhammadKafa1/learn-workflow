@@ -1,7 +1,6 @@
 SHELL := /bin/bash
 
-PULL_REQUEST_TITLE ?= pull request title
+TEST_VAR ?= test-var-from-make-file
 
-conventional-pr-title-lint:
-	@echo "🚀 Checking PR Title"
-	@source "scripts/conventional-commits/message.sh $(PULL_REQUEST_TITLE)"
+test-step:
+	@echo ${TEST_VAR}

@@ -5,7 +5,21 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
-            - name: Write a multi-line message
-              run: |
-                echo This demo file shows a 
-                echo basic and easy-to-understand workflow.
+
+            - name: print test var without passing anything.
+              run: make test-step
+
+            - name: print test var with passing it as env variable
+              run: make test-step
+              env:
+                TEST_VAR: test-var-from-workflow-file
+
+            - name: print test var with passing it with export
+              run: export TEST_VAR="test-var-from-export-command" && make test-step
+
+            - name: print test var with passing it two lines
+              run: |-
+                TEST_VAR="test-var-declared-only" \
+                docker test-step
+        
+        
