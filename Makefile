@@ -8,3 +8,7 @@ test-step:
 
 test-step1:
     @echo ${TEST_VAR1}
+
+test-step-all:
+    @echo ${TEST_VAR}
+	@echo ${TEST_VAR1}
