@@ -37,7 +37,7 @@ jobs:
               run: export TEST_VAR="test-var-from-export-command" && make test-step
 
             - name: print test var with passing it two line
-              run: |
+              run: |-
                 (
                   TEST_VAR="value1" \
                   TEST_VAR1="$(make test-step)" \
