@@ -23,7 +23,9 @@ gha-lint: ${ACTIONLINT}
 	@echo "🚀 Linting github actions code"
 	@$(ACTIONLINT)
 
-
+## gha-linter-info: Returns information about the current github actions linter being used
+gha-linter-info:
+	@echo ${ACTIONLINT}
 
 
 ${ACTIONLINT}:
