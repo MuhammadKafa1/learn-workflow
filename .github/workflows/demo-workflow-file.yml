@@ -19,9 +19,8 @@ jobs:
 
             - name: print test var with passing it two lines
               run: |-
-                TEST_VAR="test-var-declared-only" \
-                TEST_VAR1="test-var1-declared-only" \
-                make test-step \
+                TEST_VAR="$(make test-step)" \
+                TEST_VAR1="$(make test-step)" \
                 make test-step
 
             - name: print test var with passing it two times
