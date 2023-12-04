@@ -24,7 +24,7 @@ jobs:
                 make test-step
 
                 TEST_VAR1="test var1 = value2" \
-                make test-step
+                echo "$TEST_VAR"
 
           
         
