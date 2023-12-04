@@ -23,11 +23,11 @@ jobs:
                 TEST_VAR1="test-var1-declared-only" \
                 make test-step
 
-            - name: print test var with passing it two lines
+            - name: print test var with passing it two times
               run: |-
-                  TEST_VAR="test-var-declared-only" \
-                  make test-step \
-                  TEST_VAR="test-var-declared-only-again" \
-                  make test-step
+                TEST_VAR="test-var-declared-only" \
+                make test-step \
+                TEST_VAR="test-var-declared-only-again" \
+                make test-step
           
         
