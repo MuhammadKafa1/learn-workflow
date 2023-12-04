@@ -33,7 +33,6 @@ jobs:
               run: |-
                 GCP_PROJECT_ID="${{ needs.export-dev-variables.outputs.GCP_PROJECT_ID }}" \
                 DEV_IMAGE="$(make docker-info)" \
-                GCP_PROJECT_ID="${{ vars.GCP_PROJECT_ID }}" \
                 STAGE_IMAGE="$(make docker-info)" \
                 docker tag "$DEV_IMAGE" "$STAGE_IMAGE"
 
