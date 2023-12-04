@@ -19,7 +19,8 @@ jobs:
 
             - name: print test var with passing it two lines
               run: |-
-                TEST_VAR="test-var-declared-only"
+                TEST_VAR="test-var-declared-only" \
+                echo $TEST_VAR \
                 make test-step
         
         
