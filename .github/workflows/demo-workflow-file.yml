@@ -26,5 +26,10 @@ jobs:
                   TEST_VAR2="$(make test-step)" \
                   make test-step-all \
                 )
+
+                ( \
+                  TEST_VAR="xxx" \
+                  make test-step-all \
+                )
           
         
