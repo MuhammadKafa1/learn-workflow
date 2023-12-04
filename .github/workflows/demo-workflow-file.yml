@@ -34,8 +34,8 @@ jobs:
                 DEV_IMAGE="$(make docker-info)" \
                 GCP_PROJECT_ID="${{ vars.GCP_PROJECT_ID }}" \
                 STAGE_IMAGE="$(make docker-info)" \
-                docker tag "$DEV_IMAGE" "$STAGE_IMAGE"         
-        
+                docker tag "$DEV_IMAGE" "$STAGE_IMAGE"
+
                 GCP_PROJECT_ID="${{ vars.GCP_PROJECT_ID }}" \
                 make docker-publish
           
