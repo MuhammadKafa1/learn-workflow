@@ -17,7 +17,7 @@ jobs:
             - name: print test var with passing it with export
               run: export TEST_VAR="test-var-from-export-command" && make test-step
 
-            - name: print test var with passing it two lines
+            - name: print test var with passing it two line
               run: |
                 ( \
                   TEST_VAR="test var = value1" \
