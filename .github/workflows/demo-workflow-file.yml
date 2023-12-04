@@ -1,5 +1,22 @@
 on: [push]
 jobs:
+    export-dev-variables:
+      name: get dev variables
+      environment: dev
+      runs-on: ubuntu-latest
+      steps:
+        - name: export dev variables for the 'docker' job
+          id: export-dev-variables
+          run: |-
+            {
+              echo "GCP_PROJECT_ID=${{ vars.GCP_PROJECT_ID }}"
+              echo "GCP_SERVICE_ACCOUNT_NAME=${{ vars.GCP_SERVICE_ACCOUNT_NAME }}"
+              echo "GCP_PROJECT_NUMBER=${{ vars.GCP_PROJECT_NUMBER }}"
+            } >> "$GITHUB_OUTPUT"
+      outputs:
+        GCP_PROJECT_ID: ${{ steps.export-dev-variables.outputs.GCP_PROJECT_ID }}
+        GCP_SERVICE_ACCOUNT_NAME: ${{ steps.export-dev-variables.outputs.GCP_SERVICE_ACCOUNT_NAME }}
+        GCP_PROJECT_NUMBER: ${{ steps.export-dev-variables.outputs.GCP_PROJECT_NUMBER }}
     build:
         environment: dev
         name: Hello world on push
