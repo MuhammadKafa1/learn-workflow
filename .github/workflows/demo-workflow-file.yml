@@ -20,14 +20,14 @@ jobs:
             - name: print test var with passing it two lines
               run: |-
                 TEST_VAR="$(make test-step)" \
-                make test-step \
+                make test-step
                 TEST_VAR1="$(make test-step)" \
                 make test-step
 
             - name: print test var with passing it two times
               run: |-
                 TEST_VAR="test-var-declared-only" \
-                make test-step \
+                make test-step
                 TEST_VAR="test-var-declared-only-again" \
                 make test-step
           
