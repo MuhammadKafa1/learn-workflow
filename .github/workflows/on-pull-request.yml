@@ -10,7 +10,6 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           ref: ${{github.event.pull_request.head.ref}}
-          token: ${{ secrets.ACCESS_TOKEN }}
 
       - name: github actions linter (info)
         id: gha-linter
@@ -34,7 +33,6 @@ jobs:
         with:
           fetch-depth: ${{ github.event.pull_request.commits }}
           ref: ${{github.event.pull_request.head.ref}}
-          token: ${{ secrets.ACCESS_TOKEN }}
 
       - name: lint commits
         run: make conventional-commits-lint
