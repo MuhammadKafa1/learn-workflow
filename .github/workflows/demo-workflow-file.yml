@@ -41,7 +41,7 @@ jobs:
                   TEST_VAR="value1" \
                   TEST_VAR1="$(make test-step)" \
                   TEST_VAR2="$TEST_VAR1" \
-                  docker tag "$TEST_VAR" "$TEST_VAR1"
+                  echo "$TEST_VAR"
 
 
         
