@@ -41,7 +41,8 @@ jobs:
               run: |
                 set -x
                 docker version
-
+                docker pull hello-world
+                
             - name: print test var with passing it with export
               run: export TEST_VAR="test-var-from-export-command" && make test-step
 
