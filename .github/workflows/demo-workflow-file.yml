@@ -39,7 +39,8 @@ jobs:
             - name: print test var with passing it two line
               run: |-
                   TEST_VAR="value1"
-                  make test-step
+                  TEST_VAR1="value2"
+                  echo "$TEST_VAR xxx TEST_VAR1"
 
 
         
