@@ -50,7 +50,7 @@ jobs:
                   TEST_VAR="hello-world" \
                   TEST_VAR1="$(make test-step)" \
                   TEST_VAR2="hello-world-xx" \
-                  docker tag "$TEST_VAR1" "$TEST_VAR2"
+                  docker tag "${TEST_VAR1}" "${TEST_VAR2}"
 
 
         
