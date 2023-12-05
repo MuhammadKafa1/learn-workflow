@@ -43,7 +43,6 @@ jobs:
                   TEST_VAR1="$(make test-step)"
                   export TEST_VAR1
                   TEST_VAR="value2"
-                  export TEST_VAR
                   TEST_VAR2="$(make test-step)"
                   export TEST_VAR2
                   echo "$TEST_VAR $TEST_VAR1 $TEST_VAR2"
