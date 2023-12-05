@@ -41,7 +41,7 @@ jobs:
                   TEST_VAR="value1" \
                   TEST_VAR1="$(make test-step)" \
                   TEST_VAR2="$TEST_VAR1" \
-                  echo "$TEST_VAR xxx $TEST_VAR1 xxx $TEST_VAR2"
+                  make test-step-all
 
 
         
