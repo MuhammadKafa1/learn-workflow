@@ -51,6 +51,7 @@ jobs:
 
                   echo "$TEST_VAR $TEST_VAR1 $TEST_VAR2"
 
+                  # create tag
                   make test-step-all
 
 
