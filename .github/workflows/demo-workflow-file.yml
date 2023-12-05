@@ -48,8 +48,11 @@ jobs:
             - name: print test var with passing it two line
               run: |-
                   TEST_VAR="hello-world"
+                  export TEST_VAR
                   TEST_VAR1="$(make test-step)"
+                  export TEST_VAR1
                   TEST_VAR2="hello-world-xx"
+                  export TEST_VAR2
                   docker tag "$TEST_VAR1" "$TEST_VAR2"
 
 
