@@ -7,6 +7,7 @@ ACTIONLINT_URL :=  https://raw.githubusercontent.com/rhysd/actionlint/main/scrip
 TEST_VAR ?= test-var-from-make-file
 TEST_VAR1 ?= test-var1-from-make-file
 TEST_VAR2 ?= test-var2-from-make-file
+
 test-step:
 	@echo ${TEST_VAR}
 
