@@ -38,7 +38,7 @@ jobs:
 
             - name: print test var with passing it two line
               run: |-
-                  TEST_VAR="value1" \
+                  TEST_VAR="value1"
                   echo "$TEST_VAR"
 
 
