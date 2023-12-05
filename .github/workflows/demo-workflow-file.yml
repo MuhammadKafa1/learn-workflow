@@ -43,5 +43,7 @@ jobs:
                   TEST_VAR="value2" \
                   TEST_VAR2="$(make test-step)" \
                   make test-step
+                  make test-step1
+                  make test-step-all
 
         
