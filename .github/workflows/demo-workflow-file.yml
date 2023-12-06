@@ -24,10 +24,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
-
-            - name: which shell is used
-              run: echo $0
-
+            
             - name: print test var without passing anything.
               run: make test-step
 
@@ -60,8 +57,8 @@ jobs:
 #                  docker tag "$TEST_VAR1" "$TEST_VAR2"
 #                  docker images
 
-            - name: testing
-              run: |
+            - name: testing tag docker image
+              run: |-
                 TEST_VAR="hello-world" \
                 TEST_VAR1="$(make test-step)"
                 TEST_VAR2="hello-world-xx"
