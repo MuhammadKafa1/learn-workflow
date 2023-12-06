@@ -25,6 +25,9 @@ jobs:
         steps:
             - uses: actions/checkout@v4
 
+            - name: which shell is used
+              run: echo $0
+              
             - name: print test var without passing anything.
               run: make test-step
 
