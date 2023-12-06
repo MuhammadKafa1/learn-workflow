@@ -57,12 +57,9 @@ jobs:
                   docker tag "$TEST_VAR1" "$TEST_VAR2"
                   docker images
 
-#            - name: testing tag docker image
-#              run: |-
-#                TEST_VAR="hello-world" \
-#                TEST_VAR1="$(make test-step)"
-#                TEST_VAR2="hello-world-xx"
-#                docker tag "$TEST_VAR1" "$TEST_VAR2"
-#                docker images
+            - name:
+              run: |
+                TEST_VAR="hello test var" \
+                make test-step
 
         
