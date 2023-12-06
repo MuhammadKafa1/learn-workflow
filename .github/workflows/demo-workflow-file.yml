@@ -27,7 +27,7 @@ jobs:
 
             - name: which shell is used
               run: echo $0
-              
+
             - name: print test var without passing anything.
               run: make test-step
 
@@ -49,16 +49,24 @@ jobs:
             - name: print test var with passing it with export
               run: export TEST_VAR="test-var-from-export-command" && make test-step
 
-            - name: print test var with passing it two line
-              run: |-
-                  TEST_VAR="hello-world"
-                  export TEST_VAR
-                  TEST_VAR1="$(make test-step)"
-                  export TEST_VAR1
-                  TEST_VAR2="hello-world-xx"
-                  export TEST_VAR2
-                  docker tag "$TEST_VAR1" "$TEST_VAR2"
-                  docker images
+#            - name: print test var with passing it two line
+#              run: |-
+#                  TEST_VAR="hello-world"
+#                  export TEST_VAR
+#                  TEST_VAR1="$(make test-step)"
+#                  export TEST_VAR1
+#                  TEST_VAR2="hello-world-xx"
+#                  export TEST_VAR2
+#                  docker tag "$TEST_VAR1" "$TEST_VAR2"
+#                  docker images
 
+            - name: testing
+              run: |
+                TEST_VAR="hello-world"
+                export TEST_VAR
+                TEST_VAR1="$(make test-step)"
+                TEST_VAR2="hello-world-xx"
+                docker tag "$TEST_VAR1" "$TEST_VAR2"
+                docker images
 
         
