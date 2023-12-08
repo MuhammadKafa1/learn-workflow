@@ -15,6 +15,7 @@ VALID_TAG_FORMAT="^v([0-9]+)\.([0-9]+)\.([0-9]+)$"
 LATEST_TAG=$(git describe --tags --always --abbrev=0)
 
 if ! [[ $LATEST_TAG =~ $VALID_TAG_FORMAT ]]; then
+    echo "Latest tag is not valid"
     exit 1
 fi
 
