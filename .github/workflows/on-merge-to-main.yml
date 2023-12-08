@@ -6,7 +6,7 @@ on:
       - '**'
 
 name: on-merge-to-main
-#  # # # # #
+#  # # # # # #
 jobs:
   Tag:
     name: Tag
