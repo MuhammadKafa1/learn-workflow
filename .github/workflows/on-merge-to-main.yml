@@ -7,10 +7,7 @@ on:
 
 name: on-merge-to-main
 
-permissions:
-  contents: write
-  id-token: write
-#  
+  
 jobs:
   Tag:
     runs-on: ubuntu-latest
