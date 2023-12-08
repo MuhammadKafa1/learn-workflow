@@ -11,7 +11,7 @@ VALID_MESSAGE_FORMAT="^([a-z]+)(\([a-z]+\))?(!)?: .*$"
 # Define the valid tag format regex.
 VALID_TAG_FORMAT="^v([0-9]+)\.([0-9]+)\.([0-9]+)$"
 
-# Extract information about the latest existing tag.
+# Extract information about the latest existing tag
 LATEST_TAG=$(git describe --tags --always --abbrev=0)
 
 if ! [[ $LATEST_TAG =~ $VALID_TAG_FORMAT ]]; then
