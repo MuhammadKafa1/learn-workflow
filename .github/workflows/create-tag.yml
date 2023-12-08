@@ -9,10 +9,6 @@ on:
 
 name: Create Tag
 
-permissions:
-  id-token: write
-  contents: read
-  
 jobs:
   Tag:
     environment: ${{ inputs.environment }}
