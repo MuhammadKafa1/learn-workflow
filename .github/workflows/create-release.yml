@@ -24,7 +24,6 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
-          token: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Create changelog
         run: scripts/conventional-commits/change-log.sh > CHANGELOG.md
@@ -32,7 +31,6 @@ jobs:
       - name: Create release
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea #v7.0.1
         with:
-          github-token: ${{ secrets.ACCESS_TOKEN }}
           script: |
             const fs = require('fs');
             const content = fs.readFileSync('CHANGELOG.md', 'utf8');
