@@ -27,6 +27,9 @@ jobs:
         id: semantic-version
         run: echo "version=$(scripts/conventional-commits/version.sh)" >> "$GITHUB_OUTPUT"
 
+      - name: print version 
+        run: echo "version = ${{ steps.semantic-version.outputs.version }}"
+
       - name: Create tag
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea #v7.0.1
         if: ${{ steps.semantic-version.outputs.version != '' }}
