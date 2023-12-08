@@ -10,7 +10,7 @@ name: on-merge-to-main
 permissions:
   contents: read
   id-token: write
-# 
+#  
 jobs:
   Tag:
     name: Tag
