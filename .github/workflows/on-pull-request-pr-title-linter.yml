@@ -1,6 +1,7 @@
 on:
   pull_request:
     types: [opened, synchronize, reopened, edited]
+    branches: [xxx]
       
 name: PR title Linter on pull request
   

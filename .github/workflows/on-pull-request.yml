@@ -1,4 +1,6 @@
-on: [push]
+on:
+  push:
+    branches: [xxx]
 
 name: on push linting code
 

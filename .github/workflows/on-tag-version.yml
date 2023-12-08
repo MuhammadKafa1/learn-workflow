@@ -1,0 +1,15 @@
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+name: on-tag-version
+
+jobs:
+  Release:
+    name: Release
+    uses: ./.github/workflows/create-release.yml
+    secrets: inherit
+    with:
+      environment: stage
+      prerelease: true

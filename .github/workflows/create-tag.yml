@@ -1,0 +1,43 @@
+# This workflow creates a semantic version tag using conventional commits.
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+
+name: Create Tag
+
+jobs:
+  Tag:
+    environment: ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    steps:
+      # Setup environment
+      - name: Checkout code
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          fetch-depth: 0 # Checkout everything to get access to the tags
+          ref: ${{github.event.pull_request.head.ref}}
+          repository: ${{github.event.pull_request.head.repo.full_name}}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Automatically add semantic version tag
+      - name: Get version
+        id: semantic-version
+        run: echo "version=$(scripts/conventional-commits/version.sh)" >> "$GITHUB_OUTPUT"
+
+      - name: Create tag
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea #v7.0.1
+        if: ${{ steps.semantic-version.outputs.version != '' }}
+        with:
+          github-token: ${{ secrets.ACCESS_TOKEN }}
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/${{ steps.semantic-version.outputs.version }}',
+              sha: context.sha
+            })
+
