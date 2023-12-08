@@ -11,21 +11,31 @@ VALID_MESSAGE_FORMAT="^([a-z]+)(\([a-z]+\))?(!)?: .*$"
 # Define the valid tag format regex.
 VALID_TAG_FORMAT="^v([0-9]+)\.([0-9]+)\.([0-9]+)$"
 
+
 # Extract information about the latest existing tag.
 LATEST_TAG=$(git describe --tags --always --abbrev=0)
-
+echo "latest tag is $LATEST_TAG"
 if ! [[ $LATEST_TAG =~ $VALID_TAG_FORMAT ]]; then
     echo "Latest tag is not valid"
     exit 1
 fi
-
+echo "Latest tag is valid"
 TAG_MAJOR=${BASH_REMATCH[1]}
 TAG_MINOR=${BASH_REMATCH[2]}
 TAG_PATCH=${BASH_REMATCH[3]}
 
+echo "tag major is $TAG_MAJOR"
+echo "tag minor is $TAG_MINOR"
+echo "tag patch is $TAG_PATCH"
+
 # Get the commit SHAs for the commits that has been added since the last tag
 # was created.
 COMMITS=$(git log "$LATEST_TAG"..HEAD --no-merges --pretty=format:"%H")
+echo "commit hashes are:"
+for COMMIT in $COMMITS; do
+echo $COMMIT
+done
+
 
 # Track the changes that have been made.
 SHOULD_BUMP_MAJOR=false
@@ -36,12 +46,14 @@ SHOULD_BUMP_PATCH=false
 for COMMIT in $COMMITS; do
     # Get the commit message of the current commit.
     MESSAGE=$(git log -1 "${COMMIT}" --pretty=format:"%s")
-
+    echo "Commit message is $MESSAGE"
     # Validate message and collect information about the current commit.
     if [[ "$MESSAGE" =~ $VALID_MESSAGE_FORMAT ]]; then
-        COMMIT_TYPE=${BASH_REMATCH[1]}
-        COMMIT_BREAKING_CHANGE=${BASH_REMATCH[3]}
 
+        COMMIT_TYPE=${BASH_REMATCH[1]}
+        echo "commit type is $COMMIT_TYPE"
+        COMMIT_BREAKING_CHANGE=${BASH_REMATCH[3]}
+        echo "commit breaking change is $COMMIT_BREAKING_CHANGE"
         # Breaking changes trumps all other commits.
         if [[ -n "$COMMIT_BREAKING_CHANGE" ]]; then
             SHOULD_BUMP_MAJOR=true
