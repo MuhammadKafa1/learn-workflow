@@ -2,40 +2,28 @@
 
 on:
   workflow_call:
-    inputs:
-      environment:
+    secrets:
+      ACCESS_TOKEN:
         required: true
-        type: string
+        description: needed to access github from the Action github-script.
 
-name: Create Tag
+name: create tag
 
 jobs:
-  Tag:
-    environment: ${{ inputs.environment }}
+  tag:
     runs-on: ubuntu-latest
     steps:
-      # Setup environment
-      - name: Checkout code
+      - name: checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           fetch-depth: 0 # Checkout everything to get access to the tags
-          ref: ${{github.event.pull_request.head.ref}}
-          repository: ${{github.event.pull_request.head.repo.full_name}}
-
-      - name: print some variables
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
 
       # Automatically add semantic version tag   
-      - name: Get version
+      - name: get the new version
         id: semantic-version
         run: echo "version=$(scripts/conventional-commits/version.sh)" >> "$GITHUB_OUTPUT"
 
-      - name: print version 
-        run: echo "version = ${{ steps.semantic-version.outputs.version }}"
-
-      - name: Create tag
+      - name: create tag
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea #v7.0.1
         if: ${{ steps.semantic-version.outputs.version != '' }}
         with:

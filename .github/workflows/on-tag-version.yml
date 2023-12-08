@@ -8,8 +8,7 @@ name: on-tag-version
 jobs:
   Release:
     name: Release
-    uses: ./.github/workflows/create-release.yml
+    uses: ./.github/workflows/create-pre-release.yml
     secrets: inherit
     with:
-      environment: stage
       prerelease: true
