@@ -22,6 +22,10 @@ jobs:
           ref: ${{github.event.pull_request.head.ref}}
           repository: ${{github.event.pull_request.head.repo.full_name}}
 
+      - name: print some variables
+        run: |
+          echo "github.event.pull_request.head.ref= ${{github.event.pull_request.head.ref}}"
+          
       # Automatically add semantic version tag   
       - name: Get version
         id: semantic-version
