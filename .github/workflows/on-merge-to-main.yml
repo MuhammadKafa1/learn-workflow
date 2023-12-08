@@ -1,12 +1,12 @@
 on:
   push:
     branches:
-      - main
+      - testBranch
     tags-ignore:
       - '**'
 
 name: on-merge-to-main
-#  
+#  #
 jobs:
   Tag:
     name: Tag
