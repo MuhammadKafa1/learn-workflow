@@ -13,3 +13,8 @@ jobs:
     uses: ./.github/workflows/create-tag.yml
     secrets:
       ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+  create-pre-release:
+    needs: Tag
+    uses: ./.github/workflows/create-pre-release.yml
+    
