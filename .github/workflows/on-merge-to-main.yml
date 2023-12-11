@@ -11,6 +11,5 @@ jobs:
   Tag:
     name: Tag
     uses: ./.github/workflows/create-tag.yml
-    secrets: inherit
-    with:
-      environment: dev
+    secrets:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
