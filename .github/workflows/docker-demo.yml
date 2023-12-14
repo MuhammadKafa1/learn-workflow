@@ -58,7 +58,7 @@ jobs:
                   export TEST_VAR2
                   SOURCE_IMAGE=$TEST_VAR1
                   export SOURCE_IMAGE
-                  TARGET_IMAGE="hello-world-XYZ"
+                  TARGET_IMAGE="hello-world-xyz"
                   export TARGET_IMAGE
                   make docker-tag
                   docker images
