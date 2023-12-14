@@ -49,8 +49,17 @@ jobs:
               run: export TEST_VAR="test-var-from-export-command" && make test-step
 
             - name: print test var with passing it two line
+              id: step-tags
               run: |-
                   TEST_VAR="hello-world"
+                  export TEST_VAR
                   TEST_VAR1="$(make test-step)"
+                  echo "TEST_VAR1=$(make test-step)" >> $GITHUB_OUTPUT
+            
+            - name: print var
+              run: |-
+                make test-step1
+              env:
+                TEST_VAR1: ${{ steps.step-tags.outputs.TEST_VAR1 }}
 
         
