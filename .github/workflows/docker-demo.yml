@@ -56,7 +56,11 @@ jobs:
                   export TEST_VAR1
                   TEST_VAR2="hello-world-xx"
                   export TEST_VAR2
-                  docker tag "$TEST_VAR1" "$TEST_VAR2"
+                  SOURCE_IMAGE=$TEST_VAR1
+                  export SOURCE_IMAGE
+                  TARGET_IMAGE=$TEST_VAR2
+                  export TARGET_IMAGE
+                  make docker-tag
                   docker images
 
             - name:

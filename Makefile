@@ -19,6 +19,14 @@ test-step-all:
 	@echo ${TEST_VAR1}
 	@echo ${TEST_VAR2}
 
+docker-tag:
+  @if [[ -z "$(SOURCE_IMAGE)" || -z "$(TARGET_IMAGE)" ]]; then \
+    echo "INVALID INPUT: to add a new tag, set env 'SOURCE_IMAGE' and 'TARGET_IMAGE'"; \
+    exit 1; \
+  fi
+  @echo "🚀 tagging docker image"
+  docker tag ${SOURCE_IMAGE} ${TARGET_IMAGE}
+
 ## gha-lint: Lint the github actions code
 gha-lint: ${ACTIONLINT}
 	@echo "🚀 Linting github actions code"
