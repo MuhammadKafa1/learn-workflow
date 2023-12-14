@@ -51,23 +51,6 @@ jobs:
             - name: print test var with passing it two line
               run: |-
                   TEST_VAR="hello-world"
-                  export TEST_VAR
                   TEST_VAR1="$(make test-step)"
-                  export TEST_VAR1
-                  TEST_VAR2="hello-world-xx"
-                  export TEST_VAR2
-                  SOURCE_IMAGE=$TEST_VAR1
-                  export SOURCE_IMAGE
-                  TARGET_IMAGE="hello-world-xyz"
-                  export TARGET_IMAGE
-                  make docker-tag
-                  TARGET_IMAGE="hello-world-abc"
-                  make docker-tag
-                  docker images
-
-            - name:
-              run: |
-                TEST_VAR="hello test var" \
-                make test-step
 
         
