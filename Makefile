@@ -25,7 +25,7 @@ docker-tag:
     exit 1; \
   fi
   @echo "🚀 tagging docker image"
-  docker tag ${SOURCE_IMAGE} ${TARGET_IMAGE}
+  @docker tag ${SOURCE_IMAGE} ${TARGET_IMAGE}
 
 ## gha-lint: Lint the github actions code
 gha-lint: ${ACTIONLINT}
