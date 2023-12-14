@@ -30,6 +30,11 @@ jobs:
             - name: print test var without passing anything.
               run: make test-step
 
+            - name: print test var with passing it as env variable
+              run: make test-step
+              env:
+                TEST_VAR: test-var-from-workflow-file
+
             - name: setup docker
               uses: docker-practice/actions-setup-docker@master
               timeout-minutes: 12
