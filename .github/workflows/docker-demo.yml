@@ -61,6 +61,8 @@ jobs:
                   TARGET_IMAGE="hello-world-xyz"
                   export TARGET_IMAGE
                   make docker-tag
+                  TARGET_IMAGE="hello-world-abc"
+                  make docker-tag
                   docker images
 
             - name:
