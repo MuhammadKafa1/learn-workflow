@@ -54,6 +54,7 @@ jobs:
                   TEST_VAR="hello-world"
                   export TEST_VAR
                   echo "TEST_VAR1=$(make test-step)" >> $GITHUB_OUTPUT
+                  make test-step1
             
             - name: print var
               run: |-
