@@ -54,9 +54,7 @@ jobs:
                 TEST_VAR="hello-world"
                 export TEST_VAR
                 TEST_VAR1="$(make test-step)"
-                export TEST_VAR1
                 TEST_VAR2="hello-world-xx"
-                export TEST_VAR2
                 SOURCE_IMAGE=$TEST_VAR1 TARGET_IMAGE="hello-world-xyz1" make docker-tag
                 SOURCE_IMAGE=$TEST_VAR1 TARGET_IMAGE="hello-world-abc1" make docker-tag
                 docker images
