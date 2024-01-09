@@ -7,7 +7,7 @@ concurrency:
   group: on-tag-creation
 
 name: on tag creation
-
+# comment
 jobs:
   create-pre-release:
     runs-on: ubuntu-latest
