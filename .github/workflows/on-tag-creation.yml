@@ -1,12 +1,7 @@
 on:
   push:
     tags:
-      - 'v(0|[1-9]\d*).(0|[1-9]\d*).(0|[1-9]\d*)'
-      # 'v[0-9]+.[0-9]+.[0-9]+'
-      #'^v([0-9]+)\.([0-9]+)\.([0-9]+)'
-
-concurrency:
-  group: on-tag-creation
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 name: on tag creation
 # comment11
