@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           fetch-depth: 2
-          
+
       - name: set ouput variables
         id: files_changed
         run: |
@@ -29,6 +29,9 @@ jobs:
           if [[ $(grep "Dockerfile" <<< "$files_changed") ]]; then
                     echo "Dockerfile changed"
                     echo "Dockerfile_changed=true" >> $GITHUB_OUTPUT
+          else
+              echo "Dockerfile didn't changed"
+              echo "Dockerfile_changed=false" >> $GITHUB_OUTPUT
           fi
   Print-Output:
     runs-on: ubuntu-latest
@@ -37,7 +40,9 @@ jobs:
       - name: print outputs
         run: |
           go_files_changed="${{ needs.files_changed.outputs.go_files_changed }}"
+          export go_files_changed
           Dockerfile_changed="${{ needs.files_changed.outputs.Dockerfile_changed }}"
+          export Dockerfile_changed
           echo "xxx $go_files_changed"
           echo "xxx $Dockerfile_changed"
 
