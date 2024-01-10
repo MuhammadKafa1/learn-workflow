@@ -33,7 +33,7 @@ jobs:
               echo "Dockerfile didn't changed"
               echo "Dockerfile_changed=false" >> "$GITHUB_OUTPUT"
           fi
-          echo "§GITHUB_OUTPUT"
+          echo "$GITHUB_OUTPUT"
     outputs:
       go_files_changed: ${{ steps.files_changed_step.go_files_changed }}
       Dockerfile_changed: ${{ steps.files_changed_step.Dockerfile_changed }}
