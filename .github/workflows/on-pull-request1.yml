@@ -1,0 +1,41 @@
+on:
+  push:
+    branches: [mainBranch]
+
+name: on push linting code
+
+jobs:
+  files_changed:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: set ouput variables
+        id: files_changed
+        run: |
+          files_changed=$(git diff --name-only HEAD^ HEAD)
+  
+          if [[ $(grep "go.mod\|go.sum\|.*.go" <<< "$files_changed") ]]; then
+              echo "go files changed"
+              echo "go_files_changed=true" >> $GITHUB_OUTPUT
+          else
+              echo "go files didn't changed"
+              echo "go_files_changed=false" >> $GITHUB_OUTPUT
+          fi
+          
+          if [[ $(grep "Dockerfile" <<< "$files_changed") ]]; then
+                    echo "Dockerfile changed"
+                    echo "Dockerfile_changed=true" >> $GITHUB_OUTPUT
+          fi
+  Print-Output:
+    runs-on: ubuntu-latest
+    needs: files_changed
+    steps: 
+      - name: print outputs
+        run: |
+          go_files_changed="${{ needs.files_changed.outputs.go_files_changed }}"
+          Dockerfile_changed="${{ needs.files_changed.outputs.Dockerfile_changed }}"
+          echo "xxx $go_files_changed"
+          echo "xxx $Dockerfile_changed"
+

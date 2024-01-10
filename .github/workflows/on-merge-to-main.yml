@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - mainBranch
+      - xxx
     tags-ignore:
       - '**'
 
