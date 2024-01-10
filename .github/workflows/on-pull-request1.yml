@@ -20,23 +20,20 @@ jobs:
         id: files_changed_step
         run: |
           files_changed=$(git diff --name-only HEAD^)
-  
+
+          echo "go_files_changed=false" >> "$GITHUB_OUTPUT"
+          echo "Dockerfile_changed=false" >> "$GITHUB_OUTPUT"
+
           if [[ $(grep "go.mod\|go.sum\|.*.go" <<< "$files_changed") ]]; then
               echo "go files changed"
               echo "go_files_changed=true" >> "$GITHUB_OUTPUT"
-          else
-              echo "go files didn't changed"
-              echo "go_files_changed=false" >> "$GITHUB_OUTPUT"
           fi
-          
+
           if [[ $(grep "Dockerfile" <<< "$files_changed") ]]; then
                     echo "Dockerfile changed"
                     echo "Dockerfile_changed=true" >> "$GITHUB_OUTPUT"
-          else
-              echo "Dockerfile didn't changed"
-              echo "Dockerfile_changed=false" >> "$GITHUB_OUTPUT"
           fi
-
+          
   Print-Output:
     runs-on: ubuntu-latest
     needs: files_changed
