@@ -2,7 +2,7 @@ on:
   push:
     branches: [mainBranch]
 
-name: on push linting code
+name: test workflow
 
 jobs:
   files_changed:
