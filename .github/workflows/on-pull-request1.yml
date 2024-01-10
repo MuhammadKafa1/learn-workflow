@@ -7,9 +7,6 @@ name: on push linting code
 jobs:
   files_changed:
     runs-on: ubuntu-latest
-    outputs:
-      go_files_changed: ${{ steps.files_changed_step.go_files_changed }}
-      Dockerfile_changed: ${{ steps.files_changed_step.Dockerfile_changed }}
     steps:
       - name: checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -36,6 +33,11 @@ jobs:
               echo "Dockerfile didn't changed"
               echo "Dockerfile_changed=false" >> "$GITHUB_OUTPUT"
           fi
+          echo "§GITHUB_OUTPUT"
+    outputs:
+      go_files_changed: ${{ steps.files_changed_step.go_files_changed }}
+      Dockerfile_changed: ${{ steps.files_changed_step.Dockerfile_changed }}
+
   Print-Output:
     runs-on: ubuntu-latest
     needs: files_changed
