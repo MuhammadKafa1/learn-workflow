@@ -8,8 +8,8 @@ jobs:
   files_changed:
     runs-on: ubuntu-latest
     outputs:
-      go_files_changed: ${{ steps.files_changed.go_files_changed }}
-      Dockerfile_changed: ${{ steps.files_changed.Dockerfile_changed }}
+      go_files_changed: ${{ steps.files_changed_step.go_files_changed }}
+      Dockerfile_changed: ${{ steps.files_changed_step.Dockerfile_changed }}
     steps:
       - name: checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 2
 
       - name: set ouput variables
-        id: files_changed
+        id: files_changed_step
         run: |
           files_changed=$(git diff --name-only HEAD^ HEAD)
   
@@ -31,10 +31,10 @@ jobs:
           
           if [[ $(grep "Dockerfile" <<< "$files_changed") ]]; then
                     echo "Dockerfile changed"
-                    echo "Dockerfile_changed=true" >> $GITHUB_OUTPUT
+                    echo "Dockerfile_changed=true" >> "$GITHUB_OUTPUT"
           else
               echo "Dockerfile didn't changed"
-              echo "Dockerfile_changed=false" >> $GITHUB_OUTPUT
+              echo "Dockerfile_changed=false" >> "$GITHUB_OUTPUT"
           fi
   Print-Output:
     runs-on: ubuntu-latest
