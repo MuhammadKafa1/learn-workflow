@@ -41,11 +41,10 @@ jobs:
     needs: files_changed
     steps: 
       - name: print outputs
+        env:
+          go_files_changed: ${{ needs.files_changed.outputs.go_files_changed }}
+          Dockerfile_changed: ${{ needs.files_changed.outputs.Dockerfile_changed }}
         run: |
-          go_files_changed="${{ needs.files_changed.outputs.go_files_changed }}"
-          export go_files_changed
-          Dockerfile_changed="${{ needs.files_changed.outputs.Dockerfile_changed }}"
-          export Dockerfile_changed
           echo "xxx $go_files_changed"
           echo "xxx $Dockerfile_changed"
 
