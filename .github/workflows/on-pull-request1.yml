@@ -30,16 +30,16 @@ jobs:
           echo "Dockerfile_changed=false" >> "$GITHUB_OUTPUT"
           echo "gha_changed=false" >> "$GITHUB_OUTPUT"
 
-          if [[ $(grep "go.mod\|go.sum\|.*.go" <<< "$files_changed") ]]; then
+          if [[ $(grep -q "go.mod\|go.sum\|.*.go" <<< "$files_changed") ]]; then
               echo "go_files_changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-          if [[ $(grep "Dockerfile" <<< "$files_changed") ]]; then
+          if [[ $(grep -q "Dockerfile" <<< "$files_changed") ]]; then
                     echo "Dockerfile_changed=true" >> "$GITHUB_OUTPUT"
           fi
 
           
-          if [[ $(grep ".github/workflows/" <<< "$files_changed") ]]; then
+          if [[ $(grep -q ".github/workflows/" <<< "$files_changed") ]]; then
                     echo "gha_changed=true" >> "$GITHUB_OUTPUT"
           fi
           
