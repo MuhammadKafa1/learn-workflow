@@ -68,17 +68,17 @@ jobs:
   Job2-Dockerfile-changed: 
     runs-on: ubuntu-latest
     needs: files_changed
+    if: needs.files_changed.outputs.Dockerfile_changed == 'true'
     steps: 
       - name: step
-        if: needs.files_changed.outputs.Dockerfile_changed == 'true'
         run: echo "job 2 executed because dockerfile changed"
 
 
   Job3-GHA-changed: 
     runs-on: ubuntu-latest
     needs: files_changed
+    if: needs.files_changed.outputs.gha_changed == 'true'
     steps: 
       - name: step
-        if: needs.files_changed.outputs.gha_changed == 'true'
         run: echo "job 3 executed because gha changed"
 
