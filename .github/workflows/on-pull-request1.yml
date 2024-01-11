@@ -20,7 +20,7 @@ jobs:
       - name: set ouput variables
         id: files_changed_step
         run: |
-          files_changed=$(git diff --name-only HEAD~$(( ${{ github.event.pull_request.commits }} + 1 )))
+          files_changed=$(git diff --name-only HEAD~${{ github.event.pull_request.commits }})
           echo "files changed: $files_changed"
           echo "go_files_changed=false" >> "$GITHUB_OUTPUT"
           echo "Dockerfile_changed=false" >> "$GITHUB_OUTPUT"
