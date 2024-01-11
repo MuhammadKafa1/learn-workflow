@@ -1,7 +1,6 @@
 on:
   pull_request:
     types: [opened, synchronize, reopened, edited]
-    branches: [mainBranch]
 
 name: test workflow
 
@@ -16,13 +15,15 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           ref: ${{github.event.pull_request.head.ref}}
-          fetch-depth: 2
+          fetch-depth: $(( ${{ github.event.pull_request.commits }}))
 
       - name: set ouput variables
         id: files_changed_step
+        env: 
+          NUMBER_OF_PR_COMMITS: ${{ github.event.pull_request.commits }}
         run: |
-          files_changed=$(git diff --name-only HEAD^)
-
+          files_changed=$(git diff --name-only HEAD~$NUMBER_OF_PR_COMMITS)
+          echo "files changed: $files_changed"
           echo "go_files_changed=false" >> "$GITHUB_OUTPUT"
           echo "Dockerfile_changed=false" >> "$GITHUB_OUTPUT"
 
