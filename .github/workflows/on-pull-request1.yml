@@ -10,6 +10,7 @@ jobs:
     outputs:
       go_files_changed: ${{ steps.files_changed_step.outputs.go_files_changed }}
       Dockerfile_changed: ${{ steps.files_changed_step.outputs.Dockerfile_changed }}
+      gha_changed: ${{ steps.files_changed_step.outputs.gha_changed }}
     steps:
       - name: checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -27,6 +28,7 @@ jobs:
 
           echo "go_files_changed=false" >> "$GITHUB_OUTPUT"
           echo "Dockerfile_changed=false" >> "$GITHUB_OUTPUT"
+          echo "gha_changed=false" >> "$GITHUB_OUTPUT"
 
           if [[ $(grep "go.mod\|go.sum\|.*.go" <<< "$files_changed") ]]; then
               echo "go_files_changed=true" >> "$GITHUB_OUTPUT"
@@ -34,6 +36,11 @@ jobs:
 
           if [[ $(grep "Dockerfile" <<< "$files_changed") ]]; then
                     echo "Dockerfile_changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+          
+          if [[ $(grep ".github/workflows/" <<< "$files_changed") ]]; then
+                    echo "gha_changed=true" >> "$GITHUB_OUTPUT"
           fi
           
   Print-Output:
@@ -44,9 +51,11 @@ jobs:
         env:
           go_files_changed: ${{ needs.files_changed.outputs.go_files_changed }}
           Dockerfile_changed: ${{ needs.files_changed.outputs.Dockerfile_changed }}
+          gha_changed: ${{ needs.files_changed.outputs.gha_changed }}
         run: |
           echo "xxx $go_files_changed"
           echo "xxx $Dockerfile_changed"
+          echo "xxx $gha_changed"
 
   Job1-go-files-changed:
     runs-on: ubuntu-latest
@@ -63,4 +72,13 @@ jobs:
       - name: step
         if: needs.files_changed.outputs.Dockerfile_changed == 'true'
         run: echo "job 2 executed because dockerfile changed"
+
+
+  Job3-GHA-changed: 
+    runs-on: ubuntu-latest
+    needs: files_changed
+    steps: 
+      - name: step
+        if: needs.files_changed.outputs.gha_changed == 'true'
+        run: echo "job 3 executed because gha changed"
 
