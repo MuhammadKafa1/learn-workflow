@@ -21,6 +21,7 @@ types=(
     'perf|⚡'
     'refactor|🔧'
     'style|💄'
+    'test|⛑'
 )
 
 echo "# Changelog #"

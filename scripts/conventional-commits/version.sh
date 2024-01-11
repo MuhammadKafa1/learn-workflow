@@ -11,7 +11,7 @@ VALID_MESSAGE_FORMAT="^([a-z]+)(\([a-z]+\))?(!)?: .*$"
 # Define the valid tag format regex.
 VALID_TAG_FORMAT="^v([0-9]+)\.([0-9]+)\.([0-9]+)$"
 
-# Extract information about the latest existing tag
+# Extract information about the latest existing tag.
 LATEST_TAG=$(git describe --tags --always --abbrev=0)
 
 if ! [[ $LATEST_TAG =~ $VALID_TAG_FORMAT ]]; then
@@ -44,7 +44,6 @@ for COMMIT in $COMMITS; do
         # Breaking changes trumps all other commits.
         if [[ -n "$COMMIT_BREAKING_CHANGE" ]]; then
             SHOULD_BUMP_MAJOR=true
-
             break
         fi
 
@@ -54,7 +53,9 @@ for COMMIT in $COMMITS; do
         fi
 
         # Signal that one or more new fixes, updated dependencies, etc. have been detected.
-        if [[ "$COMMIT_TYPE" =~ ^fix ]] || [[ "$COMMIT_TYPE" =~ ^build ]] || [[ "$COMMIT_TYPE" =~ ^perf ]] || [[ "$COMMIT_TYPE" =~ ^refactor ]] || [[ "$COMMIT_TYPE" =~ ^style ]]; then
+        if [[ "$COMMIT_TYPE" =~ ^build ]] || [[ "$COMMIT_TYPE" =~ ^ci ]] || 
+           [[ "$COMMIT_TYPE" =~ ^fix ]] ||  [[ "$COMMIT_TYPE" =~ ^perf ]] ||
+           [[ "$COMMIT_TYPE" =~ ^refactor ]] || [[ "$COMMIT_TYPE" =~ ^style ]]; then
             SHOULD_BUMP_PATCH=true
         fi
     fi

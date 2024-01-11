@@ -24,7 +24,7 @@
 #
 
 # Define the list of supported text types.
-SUPPORTED_TYPES="build|chore|ci|docs|feat|fix|perf|refactor|style|test"
+SUPPORTED_TYPES="build|ci|chore|docs|feat|fix|perf|refactor|style|test"
 
 # Define the valid text format regex.
 VALID_TEXT_FORMAT="^($SUPPORTED_TYPES)(\([a-z]+\))?!?: [a-zA-Z0-9\., \/_@()#-]+$"
