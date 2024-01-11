@@ -23,7 +23,7 @@ jobs:
           NUMBER_OF_PR_COMMITS: ${{ github.event.pull_request.commits }}
         run: |
           files_changed=$(git diff --name-only HEAD~$NUMBER_OF_PR_COMMITS)
-          echo "files changed: $files_changed"
+
           echo "go_files_changed=false" >> "$GITHUB_OUTPUT"
           echo "Dockerfile_changed=false" >> "$GITHUB_OUTPUT"
 
