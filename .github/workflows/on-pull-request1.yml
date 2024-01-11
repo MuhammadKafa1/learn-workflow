@@ -15,13 +15,13 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           ref: ${{github.event.pull_request.head.ref}}
-          fetch-depth: 3
+          fetch-depth: 5
 
       - name: set ouput variables
         id: files_changed_step
         run: |
           files_changed=$(git diff --name-only HEAD^)
-
+          echo "files changed: $files_changed"
           echo "go_files_changed=false" >> "$GITHUB_OUTPUT"
           echo "Dockerfile_changed=false" >> "$GITHUB_OUTPUT"
 
