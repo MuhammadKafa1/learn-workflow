@@ -1,5 +1,6 @@
 on:
-  push:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
     branches: [mainBranch]
 
 name: test workflow
@@ -14,6 +15,7 @@ jobs:
       - name: checkout code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
+          ref: ${{github.event.pull_request.head.ref}}
           fetch-depth: 2
 
       - name: set ouput variables
