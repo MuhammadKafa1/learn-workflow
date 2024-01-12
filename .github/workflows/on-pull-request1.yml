@@ -22,9 +22,12 @@ jobs:
         id: files_changed_step
         env: 
           NUMBER_OF_PR_COMMITS: ${{ github.event.pull_request.commits }}
+          base_sha: ${{github.event.pull_request.base.sha}}
+          head_sha: ${{ github.event.pull_request.head.sha }}
         run: |
-          echo "find the changed files in all pr commits"
-          files_changed=$(git diff --name-only HEAD~$NUMBER_OF_PR_COMMITS)
+          echo "find the changed files in all pr commits between $base_sha and $head_sha"
+
+          files_changed=$(git diff --name-only $base_sha $head_sha)
 
           echo "go_files_changed=false" >> "$GITHUB_OUTPUT"
           echo "Dockerfile_changed=false" >> "$GITHUB_OUTPUT"
