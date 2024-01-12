@@ -28,7 +28,7 @@ jobs:
           echo "find the changed files in all pr commits between $base_sha and $head_sha"
 
           files_changed=$(git diff --name-only $base_sha $head_sha)
-
+          echo $files_changed
           echo "go_files_changed=false" >> "$GITHUB_OUTPUT"
           echo "Dockerfile_changed=false" >> "$GITHUB_OUTPUT"
           echo "gha_changed=false" >> "$GITHUB_OUTPUT"
