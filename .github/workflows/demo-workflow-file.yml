@@ -1,67 +1,22 @@
 on:
   push:
-    branches: [xxx]
+    branches: [testBranch]
 jobs:
-    export-dev-variables:
-      name: get dev variables
+    job1:
+      name: job 1 
       environment: dev
       runs-on: ubuntu-latest
       steps:
-        - name: export dev variables for the 'docker' job
-          id: export-dev-variables
+        - name: step 1
           run: |-
-            {
-              echo "GCP_PROJECT_ID=${{ vars.GCP_PROJECT_ID }}"
-              echo "GCP_SERVICE_ACCOUNT_NAME=${{ vars.GCP_SERVICE_ACCOUNT_NAME }}"
-              echo "GCP_PROJECT_NUMBER=${{ vars.GCP_PROJECT_NUMBER }}"
-            } >> "$GITHUB_OUTPUT"
-      outputs:
-        GCP_PROJECT_ID: ${{ steps.export-dev-variables.outputs.GCP_PROJECT_ID }}
-        GCP_SERVICE_ACCOUNT_NAME: ${{ steps.export-dev-variables.outputs.GCP_SERVICE_ACCOUNT_NAME }}
-        GCP_PROJECT_NUMBER: ${{ steps.export-dev-variables.outputs.GCP_PROJECT_NUMBER }}
-    build:
-        needs: export-dev-variables
+            echo "This is job 1 step 1"
+    job2:
         environment: dev
-        name: Hello world on push
+        name: job 2
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
 
             - name: print test var without passing anything.
-              run: make test-step
-
-            - name: print test var with passing it as env variable
-              run: make test-step
-              env:
-                TEST_VAR: test-var-from-workflow-file
-
-            - name: setup docker
-              uses: docker-practice/actions-setup-docker@master
-              timeout-minutes: 12
-            
-            - name: docker version
-              run: |
-                set -x
-                docker version
-                docker pull hello-world
-
-            - name: print test var with passing it with export
-              run: export TEST_VAR="test-var-from-export-command" && make test-step
-
-            - name: print test var with passing it two line
-              run: |-
-                  TEST_VAR="hello-world"
-                  export TEST_VAR
-                  TEST_VAR1="$(make test-step)"
-                  export TEST_VAR1
-                  TEST_VAR2="hello-world-xx"
-                  export TEST_VAR2
-                  docker tag "$TEST_VAR1" "$TEST_VAR2"
-                  docker images
-
-            - name:
-              run: |
-                TEST_VAR="hello test var" \
-                make test-step
-
+              run: echo "This is job 2 step 1"
         
