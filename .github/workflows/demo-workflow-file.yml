@@ -7,7 +7,6 @@ jobs:
       environment: dev
       runs-on: ubuntu-latest
       steps:
-        - uses: actions/checkout@v4
         - name: step 1
           run: |-
             echo "This is job 1 step 1"
@@ -16,6 +15,8 @@ jobs:
         name: job 2
         runs-on: ubuntu-latest
         steps:
-            - name: print test var without passing anything.
-              run: echo "This is job 2 step 1"
+          - uses: actions/checkout@v4
+
+          - name: print test var without passing anything.
+            run: echo "This is job 2 step 1"
         
