@@ -34,7 +34,7 @@ jobs:
 
           - name: print deployment it 
             env: 
-              deployment_var: ${{ github.event.deployment.id }}
+              deployment_var: ${{ github.event.deployment_status.target_url }}
             run: echo "$deployment_var"
 
           - name: Dump GitHub context
