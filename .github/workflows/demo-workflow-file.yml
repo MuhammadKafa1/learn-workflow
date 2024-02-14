@@ -22,14 +22,25 @@ jobs:
     job3:
         environment: dev
         name: job 3
+        permissions: 
+          deployments: read
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v4
           - name: print test var without passing anything.
             run: echo "This is job 3 step 1"
 
-          - name: print github context
-            run: echo '${{ toJSON(job) }}'
+
+
+          - name: print deployment it 
+            env: 
+              deployment_var: ${{ github.event.deployment.id }}
+            run: echo '$deployment_var'
+
+          - name: Dump GitHub context
+            env:
+              GITHUB_CONTEXT: ${{ toJson(github) }}
+            run: echo "$GITHUB_CONTEXT"
 
           - name: install go
             uses: actions/setup-go@0c52d547c9bc32b1aa3301fd7a9cb496313a4491 # v5.0.0
