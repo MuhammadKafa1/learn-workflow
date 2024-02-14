@@ -3,7 +3,7 @@ on:
     branches: [testBranch]
 jobs:
     job1:
-      name: job 1 
+      name: job 1 .
       environment: dev
       runs-on: ubuntu-latest
       steps:
