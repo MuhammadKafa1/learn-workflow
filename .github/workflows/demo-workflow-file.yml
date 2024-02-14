@@ -19,4 +19,13 @@ jobs:
 
           - name: print test var without passing anything.
             run: echo "This is job 2 step 1"
+
+    job3:
+        environment: dev
+        name: job 3
+        runs-on: ubuntu-latest
+        steps:
+
+          - name: print test var without passing anything.
+            run: echo "This is job 3 step 1"
         
