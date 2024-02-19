@@ -22,7 +22,7 @@ jobs:
           version=$(scripts/conventional-commits/version.sh)
           echo "version=$version"
           if [ -z "${version}" ]; then
-            echo "version is not set."
+            echo "version is not set.."
             exit 1
           fi
 
