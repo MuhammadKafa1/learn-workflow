@@ -38,7 +38,7 @@ SHOULD_BUMP_MAJOR=false
 SHOULD_BUMP_MINOR=false
 SHOULD_BUMP_PATCH=false
 
-# Check each commit to calculate the next semantic version.
+# Check each commit to calculate the next semantic version
 for COMMIT in $COMMITS; do
     # Get the commit message of the current commit.
     MESSAGE=$(git log -1 "${COMMIT}" --pretty=format:"%s")
