@@ -15,6 +15,8 @@ VALID_TAG_FORMAT="^v([0-9]+)\.([0-9]+)\.([0-9]+)$"
 LATEST_TAG=$(git describe --tags --always --abbrev=0)
 
 if ! [[ $LATEST_TAG =~ $VALID_TAG_FORMAT ]]; then
+    echo "the latest tag '$LATEST_TAG' doesn't match the valid tag format." >&2
+    echo "A valid tag format is a simple symantic versioning format of the pattern ^v([0-9]+)\.([0-9]+)\.([0-9]+)$. for example v2.1.9." >&2
     exit 1
 fi
 
