@@ -21,6 +21,10 @@ jobs:
         run: |-
           version=$(scripts/conventional-commits/version.sh)
           echo "version=$version"
+          if [ -z "${version}" ]; then
+            echo "version is not set."
+            exit 1
+          if
 
       - name: create tag
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea #v7.0.1
