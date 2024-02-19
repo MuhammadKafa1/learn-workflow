@@ -20,6 +20,7 @@ jobs:
         id: semantic-version
         run: |
           version=$(scripts/conventional-commits/version.sh)
+          echo "the new version is $version"
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
       - name: create tag
