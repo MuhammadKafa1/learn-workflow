@@ -8,7 +8,7 @@
 # Define functions for error messages
 print_error_message_invalid_tag_format() {
     echo "the latest tag '$LATEST_TAG' doesn't match the valid tag format." >&2
-    echo "A valid tag format is a simple symantic versioning format of the pattern ^v([0-9]+)\.([0-9]+)\.([0-9]+)$. for example v2.1.9." >&2
+    echo "A valid tag format is a simple symantic versioning format of the pattern '$VALID_TAG_FORMAT'. for example v2.1.9." >&2
 }
 
 # Define the valid message format regex.
