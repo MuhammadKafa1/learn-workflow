@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: generate semantic version tag
+      - name: generate semantic version tag.
         id: semantic-version
         run: |
           version=$(scripts/conventional-commits/version.sh)
