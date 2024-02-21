@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash -xv
 #
 # Examines the commits that have been added, since the latest tag, and
 # calculates what the next semantic version should be based on the
