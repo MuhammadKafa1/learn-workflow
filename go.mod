@@ -1,3 +1,3 @@
-module github.com/ingka-group-digital/ofdcop-runtime-configurator
+module github.com/ingka-group-digital/opoa-talos-ruco
 
 go 1.22.0

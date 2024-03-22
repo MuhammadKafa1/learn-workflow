@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/ingka-group-digital/ofdcop-runtime-configurator/internal/some"
+	"github.com/ingka-group-digital/opoa-talos-ruco/internal/some"
 )
 
 func main() {
