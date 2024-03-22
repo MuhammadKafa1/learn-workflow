@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [xxx]
+    branches: [main]
 jobs:
     export-dev-variables:
       name: get dev variables
