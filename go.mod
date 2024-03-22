@@ -1,6 +1,6 @@
 module github.com/ingka-group-digital/ofdcop-runtime-configurator
 
-go 1.21.2
+go 1.22.0
 
 require (
 	github.com/ingka-group-digital/acl-service v0.0.0-20231114103203-4de36ef34e2d
