@@ -42,7 +42,7 @@ jobs:
 
 
       - name: test step
-        uses: ./test1.yaml
+        uses: ./.github/workflows/test1.yml
         with:
           skip_jobs: ${{ ! needs.checking-changed-files.outputs.terraform_files_changed }}
 
