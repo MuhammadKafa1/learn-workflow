@@ -24,7 +24,7 @@ jobs:
       terraform_files_changed: ${{ steps.files_changed_step.outputs.terraform_files_changed }}
 
   test1:
-    if: needs.checking-changed-files.outputs.terraform_files_changed == 'true'
+    if: needs.checking-changed-files.outputs.terraform_files_changed
     needs: checking-changed-files
     runs-on: ubuntu-latest
 
@@ -36,5 +36,5 @@ jobs:
     needs: checking-changed-files
     uses: ./.github/workflows/test1.yml
     with:
-      skip_jobs: ${{ ! needs.checking-changed-files.outputs.terraform_files_changed }}
+      skip_jobs: ${{ needs.checking-changed-files.outputs.terraform_files_changed == 'false' }}
 
