@@ -42,8 +42,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: install terraform
-        uses: ./.github/workflows/test1.yaml
+      - name: test step
+        uses: ./test1.yaml
         with:
           skip_jobs: ${{ ! needs.checking-changed-files.outputs.terraform_files_changed }}
 
