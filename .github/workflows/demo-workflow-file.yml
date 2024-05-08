@@ -34,15 +34,7 @@ jobs:
 
   test2:
     needs: checking-changed-files
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: checkout code
-        uses: actions/checkout
-
-
-      - name: test step
-        uses: ./.github/workflows/test1.yml
-        with:
-          skip_jobs: ${{ ! needs.checking-changed-files.outputs.terraform_files_changed }}
+    uses: ./.github/workflows/test1.yml
+    with:
+      skip_jobs: ${{ ! needs.checking-changed-files.outputs.terraform_files_changed }}
 
