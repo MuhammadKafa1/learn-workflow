@@ -18,7 +18,7 @@ jobs:
             echo "terraform_files_changed=false"
           } >> "$GITHUB_OUTPUT"
 
-          echo "terraform_files_changed=true" >> "$GITHUB_OUTPUT"
+          echo "terraform_files_changed=false" >> "$GITHUB_OUTPUT"
 
     outputs:
       terraform_files_changed: ${{ steps.files_changed_step.outputs.terraform_files_changed }}
