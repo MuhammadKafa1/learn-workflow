@@ -47,4 +47,4 @@ jobs:
 
       - name: print test
     #    run: echo ${{ inputs.compartment == 'all compartments' && fromJSON('["eu", "na"]') || fromJSON(format('["{0}"]',inputs.compartment)) }}
-        run: echo "${{ fromJSON(format('["{0}"]',inputs.compartment)) }}"
+        run: echo "${{ format('["{0}"]',inputs.compartment) }}"
