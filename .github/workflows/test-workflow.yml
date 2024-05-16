@@ -34,7 +34,7 @@ jobs:
     environment: ${{ inputs.environment }}
     strategy:
       matrix:
-        compartment: ${{ fromJson('["eu", "na"]') }}
+        compartment: ${{ fromJson(format('["{0}"]',inputs.compartment)) }}
     runs-on: ubuntu-latest
 
     permissions:
