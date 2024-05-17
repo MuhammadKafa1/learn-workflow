@@ -30,7 +30,7 @@ on:
 
 jobs:
   rollback:
-    name: Rollback Service (${{  startsWith(inputs.environment, 'talos') && matrix.compartment || '' }}) (${{ inputs.solver }}) 
+    name: Rollback Service${{  startsWith(inputs.environment, 'talos') && format(' ({0}) ',matrix.compartment) || '' }}(${{ inputs.solver }}) 
     environment: ${{ inputs.environment }}
     strategy:
       matrix:
