@@ -30,11 +30,11 @@ on:
 
 jobs:
   rollback:
-    name: Rollback Service
+    name: Rollback Service (${{  !startsWith(inputs.environment, 'talos') && matrix.compartment || '' }}) (${{ inputs.solver }}) 
     environment: ${{ inputs.environment }}
     strategy:
       matrix:
-        compartment: ${{ inputs.compartment == 'all compartments' && fromJSON('["eu", "na"]') || fromJSON(format('["{0}"]',inputs.compartment)) }}
+        compartment: ${{ startsWith(inputs.environment, 'talos') && inputs.compartment == 'all compartments' && fromJSON('["eu", "na"]') || fromJSON(format('["{0}"]',inputs.compartment)) }}
     runs-on: ubuntu-latest
 
     permissions:
